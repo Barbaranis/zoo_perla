@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Services - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body {
+        background: linear-gradient(to bottom right, #ffe0f0, #f9c2da);
+    }
+    section {
+        padding: 4rem 0;
+        border-bottom: 1px solid #f2b6d4;
+    }
+    .section-title {
+        color: #c91e72;
+        font-weight: bold;
+    }
+    .icon-service {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    .img-service {
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+    .img-service:hover {
+        transform: scale(1.03);
+    }
+
+
+section + section {
+    margin-top: 4rem;
+}
+
+
+
+
+.btn-pink:hover {
+    background-color: #b8226d;
+    transform: scale(1.05);
+}
+
+
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <!-- 1. Restauration & détente -->
+    <section>
+        <h2 class="section-title text-center mb-4">Restauration & détente</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="/images/restauration.jpg" class="img-fluid img-service" alt="Restauration">
+            </div>
+            <div class="col-md-6">
+                <p>De la brasserie conviviale à la crêperie fleurie, profitez de nos espaces repas pensés pour toute la famille. Aires de pique-nique, snack bio, glaces artisanales… tout est prévu pour une pause gourmande.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Visites guidées & animations -->
+    <section>
+        <h2 class="section-title text-center mb-4">Visites guidées & animations</h2>
+        <div class="row align-items-center flex-md-row-reverse">
+            <div class="col-md-6">
+                <img src="/images/visite-guidee.jpg" class="img-fluid img-service" alt="Visite guidée">
+            </div>
+            <div class="col-md-6">
+                <p>Accompagné(e) d’un soigneur, explorez les coulisses d’Arcadia et découvrez les secrets des animaux. En week-end : animations contes pour enfants, nourrissage public, et ateliers magiques au jardin sensoriel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Petit train & mobilité douce -->
+    <section>
+        <h2 class="section-title text-center mb-4">Petit train & mobilité douce</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="/images/petit-train.jpg" class="img-fluid img-service" alt="Petit train">
+            </div>
+            <div class="col-md-6">
+                <p>Grimpez à bord de notre train panoramique et traversez les paysages féeriques du zoo sans effort. Accessible PMR, silencieux et 100% électrique, il permet à tous de profiter du voyage en toute tranquillité.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Toilettes & propreté -->
+    <section>
+        <h2 class="section-title text-center mb-4">Toilettes & hygiène</h2>
+        <p class="text-center">Des toilettes propres, entretenues toutes les heures, sont disponibles à chaque grande zone. Chaque sanitaire inclut :</p>
+        <ul class="list-unstyled text-center fs-5">
+            <li><i class="bi bi-baby text-info icon-service"></i> Tables à langer & espace bébé</li>
+            <li><i class="bi bi-gender-ambiguous text-pink icon-service"></i> Cabines familiales mixtes</li>
+            <li><i class="bi bi-person-wheelchair text-success icon-service"></i> Accès PMR complet</li>
+        </ul>
+    </section>
+
+    <!-- 5. Parking Arcadia -->
+    <section>
+        <h2 class="section-title text-center mb-4">Le parking Arcadia</h2>
+        <p class="text-center">Un grand parking gratuit de 400 places vous accueille à l’entrée :</p>
+        <div class="row justify-content-center fs-5">
+            <div class="col-md-8">
+                <ul>
+                    <li><i class="bi bi-car-front icon-service text-dark"></i> Zone PMR proche de l'entrée</li>
+                    <li><i class="bi bi-bicycle icon-service text-primary"></i> Parkings vélos couverts & sécurisés</li>
+                    <li><i class="bi bi-ev-station icon-service text-success"></i> Bornes de recharge électrique</li>
+                    <li><i class="bi bi-tree icon-service text-warning"></i> Zones ombragées naturelles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Boutique & souvenirs -->
+    <section>
+        <h2 class="section-title text-center mb-4">Boutique souvenirs</h2>
+        <p class="text-center">À la sortie, visitez notre boutique enchantée remplie de peluches, objets artisanaux, graines à planter et livres jeunesse sur les animaux. 100% mignon. 100% local.</p>
+    </section>
+
+    <!-- 7. Accessibilité & familles -->
+    <section>
+        <h2 class="section-title text-center mb-4">Accessibilité & familles</h2>
+        <p class="text-center">Arcadia est un parc conçu pour tous :</p>
+        <ul class="list-unstyled text-center fs-5">
+            <li><i class="bi bi-stroller icon-service text-pink"></i> Location de poussettes sur place</li>
+            <li><i class="bi bi-translate icon-service text-secondary"></i> Signalétique multilingue (FR, EN, ES, DE)</li>
+            <li><i class="bi bi-headset icon-service text-info"></i> Points info à chaque entrée de zone</li>
+        </ul>
+    </section>
+
+    <!-- 8. Zones de repos & services bonus -->
+    <section>
+        <h2 class="section-title text-center mb-4">Zones de repos & bonus</h2>
+        <p class="text-center">Pour faire une pause, vous trouverez :</p>
+        <div class="row justify-content-center fs-5">
+            <div class="col-md-6">
+                <ul>
+                    <li><i class="bi bi-cup-straw icon-service text-danger"></i> Fontaines d’eau & distributeurs</li>
+                    <li><i class="bi bi-wifi icon-service text-info"></i> Wifi gratuit dans les zones centrales</li>
+                    <li><i class="bi bi-bounding-box icon-service text-warning"></i> Bancs confortables sous pergolas</li>
+                    <li><i class="bi bi-stars icon-service text-primary"></i> Espace relaxation & vue panoramique</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appel à l’action -->
+    <div class="text-center my-5">
+        <h3>Une question sur nos services ?</h3>
+      <a href="/contact" class="btn btn-lg mt-3" style="background-color:rgb(173, 104, 139); color: white; border: none;">Contactez-nous</a>
+
+
+    </div>
+
+</div>
+{% endblock %}
+

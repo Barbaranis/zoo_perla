@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    body {
+        background: linear-gradient(to bottom right, #ffd9ec, rgb(107, 44, 52));
+        font-family: 'Segoe UI', sans-serif;
+    }
+    section {
+        padding: 4rem 0;
+    }
+    h2 {
+        color: #7e1e61;
+        font-weight: bold;
+    }
+
+
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+
+
+    .hero-banner h1 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(123, 11, 71, 0.5);
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        color: white;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .fixed-message {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ffebf4;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+/* Zoom image au hover */
+.offre-zoo img {
+  transition: transform 0.4s ease;
+}
+
+.offre-zoo:hover img {
+  transform: scale(1.05);
+}
+
+/* Hover sur le bouton */
+.btn-offre {
+  background-color: #e279a8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-offre:hover {
+  background-color: #d06494;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-title,
+.card-text {
+  transition: color 0.3s ease;
+}
+
+.offre-zoo:hover .card-title {
+  color: #d94f94;
+}
+
+
+
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<!-- HERO avec carousel en fond -->
+<div id="zooCarousel" class="carousel slide position-relative" data-bs-ride="carousel" style="height: 100vh; overflow: hidden;">
+  <div class="carousel-inner h-100">
+    <div class="carousel-item active h-100">
+      <img src="{{ asset('image/marais1.webp') }}" class="d-block w-100 h-100 object-fit-cover" alt="Marais">
+    </div>
+    <div class="carousel-item h-100">
+      <img src="{{ asset('image/jungle1.webp') }}" class="d-block w-100 h-100 object-fit-cover" alt="Jungle">
+    </div>
+    <div class="carousel-item h-100">
+      <img src="{{ asset('image/enclosgirafe.webp') }}" class="d-block w-100 h-100 object-fit-cover" alt="Savane">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#zooCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#zooCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+  <!-- Texte hero par-dessus -->
+  <div class="position-absolute top-50 start-50 translate-middle text-center bg-white bg-opacity-75 p-4 rounded shadow">
+    <h1 class="display-4 text-dark">Bienvenue au Zoo Arcadia</h1>
+    <p class="lead text-dark">Un univers enchanteur peuplé de créatures extraordinaires vous attend !</p>
+  </div>
+</div>
+
+
+<!-- SECTION 2 : Bienvenue -->
+
+<!-- SECTION 3 : Nos environnements -->
+<section class="container">
+  <h2 class="text-center mb-4">Nos environnements naturels</h2>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <img src="{{ asset('image/enclosgirafe.webp') }}" class="img-fluid rounded mb-2" alt="Savane">
+      <h5>Savane</h5>
+    </div>
+    <div class="col-md-4">
+      <img src="{{ asset('image/jungle2.webp') }}" class="img-fluid rounded mb-2" alt="Jungle">
+      <h5>Jungle</h5>
+    </div>
+    <div class="col-md-4">
+      <img src="{{ asset('image/marais2.webp') }}" class="img-fluid rounded mb-2" alt="Marais">
+      <h5>Marais</h5>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 : Services -->
+<div class="container my-5 text-center">
+  <h2 class="mb-4">Nos services</h2>
+  <div class="row justify-content-center g-4">
+    <div class="col-md-3">
+      <img src="{{ asset('image/restaurant.jpg') }}" class="img-fluid rounded shadow" alt="Restauration">
+      <h5 class="mt-2">Restauration</h5>
+    </div>
+    <div class="col-md-3">
+      <img src="{{ asset('image/visite.webp') }}" class="img-fluid rounded shadow" alt="Visite guidée">
+      <h5 class="mt-2">Visite guidée</h5>
+    </div>
+    <div class="col-md-3">
+      <img src="{{ asset('image/souvenir.jpg') }}" class="img-fluid rounded shadow" alt="Boutique souvenir">
+      <h5 class="mt-2">Boutique souvenir</h5>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5 : Offres spéciales Zoo Arcadia -->
+<div class="container my-5">
+  <h2 class="text-center mb-4" style="color: #d94f94;">Nos offres spéciales</h2>
+  <div class="row justify-content-center">
+
+    <!-- Offre 1 : Duo -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card offre-zoo shadow-sm h-100">
+        <img src="{{ asset('image/offre_duo.jpg') }}" class="card-img-top" alt="Offre Duo Zoo">
+        <div class="card-body text-center">
+          <h5 class="card-title">Offre Duo</h5>
+          <p class="card-text">2 adultes = accès complet + boisson offerte</p>
+          <a href="#" class="btn btn-offre">En profiter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offre 2 : Parent + Enfant -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card offre-zoo shadow-sm h-100">
+        <img src="{{ asset('image/offre_parent_enfant.jpg') }}" class="card-img-top" alt="Offre Famille Zoo">
+        <div class="card-body text-center">
+          <h5 class="card-title">Parent + Enfant</h5>
+          <p class="card-text">1 adulte + 1 enfant = animation gratuite offerte</p>
+          <a href="#" class="btn btn-offre">En profiter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offre 3 : Pack Famille -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card offre-zoo shadow-sm h-100">
+        <img src="{{ asset('image/offre_famille.jpg') }}" class="card-img-top" alt="Offre Famille Zoo">
+        <div class="card-body text-center">
+          <h5 class="card-title">Pack Famille</h5>
+          <p class="card-text">Jusqu’à 15 % de réduction + goodies offerts</p>
+          <a href="#" class="btn btn-offre">En profiter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offre 4 : Visite + Boutique -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card offre-zoo shadow-sm h-100">
+        <img src="{{ asset('image/offre_visite_boutique.jpg') }}" class="card-img-top" alt="Offre Visite Zoo">
+        <div class="card-body text-center">
+          <h5 class="card-title">Visite & Boutique</h5>
+          <p class="card-text">Visite guidée + 10 % de réduction boutique</p>
+          <a href="#" class="btn btn-offre">En profiter</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- SECTION 6 : Événements -->
+<div class="container my-5">
+  <h2 class="text-center">Événements à venir</h2>
+  <ul class="list-group list-group-flush text-center mt-3">
+    <li class="list-group-item">Fête du printemps – 18 septembre 2030</li>
+    <li class="list-group-item">Soirée nocturne magique – 24 juin 2032</li>
+    <li class="list-group-item">Créations ateliers enfants</li>
+  </ul>
+</div>
+
+<!-- SECTION 7 : Avis -->
+<section class="container">
+  <h2 class="text-center">Ce qu’ils disent de nous</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <blockquote>“Incroyable ! Les enfants ont adoré et les soigneurs sont passionnés.”</blockquote>
+      <p>- Aline R.</p>
+    </div>
+    <div class="col-md-6">
+      <blockquote>“Des habitats super réalistes. On reviendra !”</blockquote>
+      <p>- Thomas & Mélissa</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 : Appel à l’action -->
+<section class="text-center" style="background-color:rgba(241, 232, 238, 0.51);">
+  <h2 class="mb-4" style="color: #7e1e61;">Prêt pour l’aventure ?</h2>
+  <a href="/contact" class="btn btn-lg m-2" style="background-color:rgb(175, 122, 147); color: white; border: none;">Nous contacter</a>
+<a href="/animaux" class="btn btn-lg m-2" style="border: 2px solid #e279a8; color: #7e1e61;">Voir les animaux</a>
+
+</section>
+
+
+
+
+
+<!-- MESSAGE FIXE -->
+<div class="fixed-message">
+  <a href="/contact">Des questions ? Écrivez-nous !</a>
+</div>
+
+{% endblock %}
+
