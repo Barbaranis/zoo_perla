@@ -1,5 +1,5 @@
-
 ###> symfony/framework-bundle ###
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -9,17 +9,34 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
+
 ###> symfony/phpunit-bridge ###
-.phpunit.result.cache
 /phpunit.xml
+.phpunit.result.cache
 ###< symfony/phpunit-bridge ###
+
 
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+
+###> node/npm/yarn ###
+/node_modules/
+/yarn.lock
+/package-lock.json
+/dist/
+/build/
+/.vite/
+/.vscode/
+/.idea/
+###< node/npm/yarn ###
+
+

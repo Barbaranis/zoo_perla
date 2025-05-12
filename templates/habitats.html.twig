@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Habitats - Zoo Arcadia{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+  .section-intro {
+    background-color: #ffe5f0;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .btn-offre {
+    background-color: #e279a8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-offre:hover {
+    background-color: #d06494;
+  }
+
+  .card-title {
+    color: #7e1e61;
+  }
+
+  .card-text {
+    color: #5a2a41;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<!-- SECTION 1 : Intro -->
+<section class="section-intro">
+  <h1>Découvrez les habitats du Zoo Arcadia</h1>
+  <p>Chaque univers a été recréé pour offrir un environnement naturel, immersif et respectueux de ses habitants.</p>
+</section>
+
+<!-- SECTION 2 : Savane + Jungle -->
+<section class="container my-5">
+  <div class="row g-4 align-items-stretch">
+
+    <!-- Savane -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ asset('image/savane.jpg') }}" class="card-img-top" alt="Habitat Savane">
+        <div class="card-body">
+          <h3 class="card-title">Savane</h3>
+          <p class="card-text">De vastes plaines dorées abritant lions, girafes et zèbres. Une reconstitution fidèle de l’Afrique sauvage.</p>
+          <a href="/habitats/savane" class="btn btn-offre">Voir les animaux</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jungle -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ asset('image/fontimgconnex.jpg') }}" class="card-img-top" alt="Habitat Jungle">
+        <div class="card-body">
+          <h3 class="card-title">Jungle</h3>
+          <p class="card-text">Une forêt luxuriante peuplée de singes, grenouilles et panthères, baignée de brume tropicale et de sons exotiques.</p>
+          <a href="/habitats/jungle" class="btn btn-offre">Voir les animaux</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 3 : Marais + Aquarium -->
+<section class="container my-5">
+  <div class="row g-4 align-items-stretch">
+
+    <!-- Marais -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ asset('image/marais1.webp') }}" class="card-img-top" alt="Habitat Marais">
+        <div class="card-body">
+          <h3 class="card-title">Marais</h3>
+          <p class="card-text">Tortues, flamants roses et crocodiles évoluent dans une zone semi-aquatique à l’ambiance mystérieuse.</p>
+          <a href="/habitats/marais" class="btn btn-offre">Voir les animaux</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aquarium -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ asset('image/aquarium.jpg') }}" class="card-img-top" alt="Habitat Aquarium">
+        <div class="card-body">
+          <h3 class="card-title">Aquarium</h3>
+          <p class="card-text">Un espace sous-marin magique où vivent requins, raies, méduses et poissons colorés. Une plongée fascinante.</p>
+          <a href="/habitats/aquarium" class="btn btn-offre">Voir les animaux</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
