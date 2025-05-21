@@ -1,0 +1,22 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <h1>Commentaires / Avis visiteurs (Firebase)</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Nom</th><th>Avis</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+        {% for key, comment in comments %}
+            <tr>
+                <td>{{ comment.nom ?? '—' }}</td>
+                <td>{{ comment.avis ?? '-' }}</td>
+                <td>{{ comment.note ?? 'N/A' }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="3">Aucun commentaire trouvé.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

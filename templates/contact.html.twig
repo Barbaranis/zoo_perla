@@ -7,20 +7,28 @@
     <div class="row">
         <div class="col-md-6 mb-4">
             <h2 class="mb-3">Nous écrire</h2>
-            <form action="#" method="POST" class="row g-3">
+
+            {# Message de succès #}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <form action="{{ path('contact') }}" method="POST" class="row g-3">
                 <div class="col-md-6">
                     <label for="nom" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="nom" name="nom" required pattern="^[A-Za-zÀ-ÿ '-]{2,40}$" title="Entrez un nom valide.">
+                    <input type="text" class="form-control" id="nom" name="nom" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Entrez une adresse e-mail valide.">
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="telephone" class="form-label">Téléphone</label>
-                    <input type="tel" class="form-control" id="telephone" name="telephone" required pattern="^0[1-9](\s?\d{2}){4}$" title="Format attendu : 01 23 45 67 89">
+                    <input type="tel" class="form-control" id="telephone" name="telephone" required>
                 </div>
 
                 <div class="col-md-6">
@@ -36,7 +44,7 @@
 
                 <div class="col-12">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" required minlength="10" maxlength="1000"></textarea>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                 </div>
 
                 <div class="col-12 text-center">

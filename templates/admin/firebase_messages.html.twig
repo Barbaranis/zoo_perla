@@ -1,0 +1,22 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <h1>Messages visiteurs (Firebase)</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Date</th><th>Nom</th><th>Message</th></tr>
+        </thead>
+        <tbody>
+        {% for key, message in messages %}
+            <tr>
+                <td>{{ message.date ?? '—' }}</td>
+                <td>{{ message.nom ?? 'Anonyme' }}</td>
+                <td>{{ message.message ?? '-' }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="3">Aucun message trouvé.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

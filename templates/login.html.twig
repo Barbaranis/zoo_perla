@@ -1,36 +1,51 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Connexion - Zoo Arcadia{% endblock %}
+
 
 {% block body %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow-lg p-4 rounded-4" style="max-width: 420px; width: 100%; background-color: #fdf0f6;">
+    <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 420px; background-color: #fdf0f6;">
         <div class="text-center mb-4">
             <i class="bi bi-shield-lock-fill fs-1 text-pink"></i>
             <h2 class="text-pink mt-2">Connexion</h2>
-            <p class="text-muted">Accédez à votre espace personnel</p>
+            <p class="text-muted">Accédez à votre espace professionnel</p>
         </div>
-        <form method="POST" action="#">
-            <div class="mb-3">
-                <label for="email" class="form-label">Adresse e-mail</label>
-                <input type="email" class="form-control" id="email" name="email"
-                       required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                       title="Entrez une adresse e-mail valide. Exemple : monadresse@mail.com">
+
+
+        {% if error %}
+            <div class="alert alert-danger">
+                Identifiants incorrects. Veuillez réessayer.
             </div>
+        {% endif %}
+
+
+        <form method="post" action="{{ path('login') }}">
+            <div class="mb-3">
+                <label for="username" class="form-label">Adresse e-mail</label>
+                <input type="email" id="username" name="_username" class="form-control"
+                       value="{{ last_username }}"
+                       required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                       title="Entrez une adresse e-mail valide. Exemple : monadresse@mail.com"
+                       autocomplete="username">
+            </div>
+
 
             <div class="mb-3 position-relative">
                 <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password"
-                       required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$"
-                       title="Au moins 6 caractères avec une majuscule, une minuscule et un chiffre.">
+                <input type="password" id="password" name="_password" class="form-control"
+                       required autocomplete="current-password">
                 <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2" onclick="togglePassword()">
                     <i class="bi bi-eye-slash" id="toggleIcon"></i>
                 </button>
             </div>
 
+
             <div class="d-grid mb-2">
                 <button type="submit" class="btn btn-pink">Se connecter</button>
             </div>
+
 
             <p class="text-center mt-2">
                 <a href="#" class="text-decoration-none text-muted">Mot de passe oublié ?</a>
@@ -39,35 +54,27 @@
     </div>
 </div>
 
+
 <style>
     .btn-pink {
         background-color: #d63384;
         color: white;
     }
-
     .btn-pink:hover {
         background-color: #c2186a;
     }
-
     .text-pink {
         color: #d63384;
     }
-
     .card {
         animation: pop-in 0.5s ease-in-out;
     }
-
     @keyframes pop-in {
-        0% {
-            transform: scale(0.95);
-            opacity: 0;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
+        0% { transform: scale(0.95); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
     }
 </style>
+
 
 <script>
     function togglePassword() {
