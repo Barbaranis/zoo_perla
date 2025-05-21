@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: zoo_arcadia_php
+    volumes:
+      - .:/var/www
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: zoo_arcadia_db
+    environment:
+      POSTGRES_DB: zoo_arcadia
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+
