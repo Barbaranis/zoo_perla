@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Les animaux du zoo{% endblock %}
+
+
+{% block body %}
+<h1 class="text-center my-4">Nos animaux</h1>
+
+
+<div class="container">
+    <div class="row">
+        {% for animal in animaux %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if animal.photo %}
+                        <img src="{{ asset('uploads/' ~ animal.photo) }}" class="card-img-top" alt="{{ animal.nom }}">
+                    {% else %}
+                        <div class="card-img-top bg-secondary text-white text-center p-5">Pas d’image</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ animal.nom }}</h5>
+                        <p class="card-text">{{ animal.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Animaux de l'enclos{% endblock %}
+
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="mb-4">Animaux de cet enclos</h2>
+
+
+    <div class="row">
+        {% for animal in animaux %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('uploads/animaux/' ~ animal.photo) }}" class="card-img-top" alt="{{ animal.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ animal.nom }}</h5>
+                        <p class="card-text">{{ animal.espece }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Aucun animal trouvé pour cet enclos.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

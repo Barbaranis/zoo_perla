@@ -8,6 +8,7 @@ use App\Entity\Enclos;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 
 class EnclosCrudController extends AbstractCrudController
@@ -22,8 +23,11 @@ class EnclosCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('nom'),
-            TextField::new('type'),
+            TextField::new('nom', 'Nom'),
+            TextField::new('type', 'Type'),
+            IntegerField::new('capacite', 'Capacité'),
         ];
     }
 }
+
+

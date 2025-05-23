@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Controller\Admin;
+
 
 use App\Entity\Animal;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -11,6 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class AnimalCrudController extends AbstractCrudController
 {
@@ -18,6 +22,7 @@ class AnimalCrudController extends AbstractCrudController
     {
         return Animal::class;
     }
+
 
     public function configureFields(string $pageName): iterable
     {
@@ -28,12 +33,17 @@ class AnimalCrudController extends AbstractCrudController
             IntegerField::new('age', 'Âge'),
             TextareaField::new('description', 'Description')->hideOnIndex(),
             ImageField::new('photo', 'Photo')
-                ->setUploadDir('public/uploads/animals')
-                ->setBasePath('/uploads/animals')
-                ->setRequired(false),
+                ->setBasePath('uploads/animaux')
+                ->setUploadDir('public/uploads')
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Une image est obligatoire pour chaque animal.']),
+                ]),
             DateField::new('dateArrivee', 'Date d’arrivée'),
             AssociationField::new('enclos', 'Enclos'),
         ];
     }
 }
+
 

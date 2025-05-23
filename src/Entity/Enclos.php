@@ -120,4 +120,14 @@ class Enclos
 
         return $this;
     }
+
+
+
+    public function __toString(): string
+{
+    return $this->nom; // ou $this->type si tu préfères afficher le type
+}
+
+
+
 }
