@@ -1,0 +1,9 @@
+framework:
+  rate_limiter:
+    submit_avis:
+      policy: 'sliding_window'
+      limit: 3
+      interval: '1 minute'
+
+
+

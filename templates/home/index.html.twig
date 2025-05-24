@@ -6,7 +6,7 @@
 {{ parent() }}
 <style>
     body {
-        background: linear-gradient(to bottom right, #ffd9ec, rgb(107, 44, 52));
+        background: linear-gradient(to bottom right,rgba(255, 217, 236, 0.53), rgba(107, 44, 52, 0.26));
         font-family: 'Segoe UI', sans-serif;
     }
     section {
@@ -52,6 +52,82 @@
 
 
 
+
+
+
+.offre-zoo {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+}
+
+
+.offre-zoo img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+
+.offre-zoo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.offre-zoo .card-title {
+  font-size: 1.3rem;
+  color: #d94f94;
+  font-weight: 700;
+}
+
+
+.offre-zoo .card-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+
+.btn-offre {
+  background-color: #e279a8;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.btn-offre:hover {
+  background-color: #d64d8f;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+
+
 /* Zoom image au hover */
 .offre-zoo img {
   transition: transform 0.4s ease;
@@ -61,15 +137,9 @@
   transform: scale(1.05);
 }
 
-/* Hover sur le bouton */
-.btn-offre {
-  background-color: #e279a8;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
+
+
+
 
 .btn-offre:hover {
   background-color: #d06494;
@@ -86,6 +156,58 @@
 .offre-zoo:hover .card-title {
   color: #d94f94;
 }
+
+
+
+
+.list-group-item {
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color:rgba(226, 121, 168, 0.77);
+  border-radius: 50%;
+  padding: 0.7rem;
+}
+
+
+
+
+
+
+.btn-avis {
+  background-color: #e279a8;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.btn-avis:hover {
+  background-color: #d06494;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -124,6 +246,7 @@
 </div>
 
 
+
 <!-- SECTION 2 : Bienvenue -->
 
 <!-- SECTION 3 : Nos environnements -->
@@ -144,6 +267,9 @@
     </div>
   </div>
 </section>
+
+
+
 
 <!-- SECTION 4 : Services -->
 <div class="container my-5 text-center">
@@ -205,6 +331,8 @@
       </div>
     </div>
 
+
+
     <!-- Offre 4 : Visite + Boutique -->
     <div class="col-md-6 col-lg-3 mb-4">
       <div class="card offre-zoo shadow-sm h-100">
@@ -222,30 +350,141 @@
 
 
 
+
 <!-- SECTION 6 : Événements -->
 <div class="container my-5">
-  <h2 class="text-center">Événements à venir</h2>
-  <ul class="list-group list-group-flush text-center mt-3">
-    <li class="list-group-item">Fête du printemps – 18 septembre 2030</li>
-    <li class="list-group-item">Soirée nocturne magique – 24 juin 2032</li>
-    <li class="list-group-item">Créations ateliers enfants</li>
-  </ul>
+  <h2 class="text-center mb-5 display-5 fw-bold" style="color: #d94f94;">Événements à venir</h2>
+  <div class="row justify-content-center g-4">
+
+
+    <!-- Carte événement 1 -->
+    <div class="col-md-6">
+      <div class="card text-white shadow" style="background: linear-gradient(135deg, #ff90b3, #d94f94); border: none; border-radius: 1rem;">
+        <div class="card-body p-5">
+          <h3 class="card-title display-6">Fête du printemps</h3>
+          <p class="card-text fs-5">Un grand moment de partage, musique et magie florale dans tout le parc.</p>
+          <div class="text-end">
+            <span class="badge bg-light text-dark fs-6">18 septembre 2030</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Carte événement 2 -->
+    <div class="col-md-6">
+      <div class="card text-white shadow" style="background: linear-gradient(135deg, #d68fd1, #7e1e61); border: none; border-radius: 1rem;">
+        <div class="card-body p-5">
+          <h3 class="card-title display-6">Soirée nocturne magique</h3>
+          <p class="card-text fs-5">Le zoo s’illumine pour une nuit féérique, réservée aux rêveurs et aventuriers.</p>
+          <div class="text-end">
+            <span class="badge bg-light text-dark fs-6">24 juin 2032</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Carte événement 3 -->
+    <div class="col-md-6">
+      <div class="card text-white shadow" style="background: linear-gradient(135deg, #ffd9ec, #ff90b3); border: none; border-radius: 1rem;">
+        <div class="card-body p-5">
+          <h3 class="card-title display-6 text-dark">Créations ateliers enfants</h3>
+          <p class="card-text text-dark fs-5">Ateliers ludiques et créatifs pour tous les enfants dès 4 ans.</p>
+          <div class="text-end">
+            <span class="badge bg-dark fs-6">En continu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>
 
+
+
+
+
 <!-- SECTION 7 : Avis -->
-<section class="container">
-  <h2 class="text-center">Ce qu’ils disent de nous</h2>
-  <div class="row">
-    <div class="col-md-6">
-      <blockquote>“Incroyable ! Les enfants ont adoré et les soigneurs sont passionnés.”</blockquote>
-      <p>- Aline R.</p>
+<section class="container my-5">
+  <h2 class="text-center mb-4" style="color: #7e1e61;">Ce que disent nos visiteurs</h2>
+  {% if messages is not empty %}
+    <div id="avisCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% for key, message in messages %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <div class="d-flex justify-content-center">
+              <div class="card p-4 shadow-sm" style="max-width: 500px; background-color: #fff0f7; border-radius: 10px;">
+                <blockquote class="blockquote mb-0 text-center">
+                  <p style="font-size: 1.1rem; color: #5a1a42;">“{{ message.message }}”</p>
+                  <footer class="blockquote-footer mt-2" style="color: #9c4470;">Anonyme</footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#avisCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#avisCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Suivant</span>
+      </button>
     </div>
-    <div class="col-md-6">
-      <blockquote>“Des habitats super réalistes. On reviendra !”</blockquote>
-      <p>- Thomas & Mélissa</p>
+  {% else %}
+    <p class="text-center">Aucun avis pour le moment.</p>
+  {% endif %}
+</section>
+
+
+
+
+
+
+<!-- Formulaire sécurisé -->
+<section class="container my-5">
+  <h2 class="text-center mb-4" style="color:rgb(67, 50, 67);">Laisser un avis</h2>
+
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          {{ form_start(avisForm) }}
+
+
+          <div class="mb-3">
+            {{ form_label(avisForm.message, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(avisForm.message, {'attr': {'class': 'form-control', 'placeholder': 'Écrivez votre avis ici...'}}) }}
+            {{ form_errors(avisForm.message) }}
+          </div>
+
+
+          <button type="submit" class="btn btn-avis w-100">Envoyer</button>
+
+
+
+
+
+          {{ form_end(avisForm) }}
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
 
 <!-- SECTION 8 : Appel à l’action -->
 <section class="text-center" style="background-color:rgba(241, 232, 238, 0.51);">
@@ -258,11 +497,6 @@
 
 
 
-
-<!-- MESSAGE FIXE -->
-<div class="fixed-message">
-  <a href="/contact">Des questions ? Écrivez-nous !</a>
-</div>
 
 {% endblock %}
 

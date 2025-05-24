@@ -60,8 +60,8 @@ class AdminDashboardController extends AbstractDashboardController
 
 
         yield MenuItem::section('Firebase');
-        yield MenuItem::linkToRoute('Messages visiteurs', 'fas fa-envelope', 'firebase_messages');
-        yield MenuItem::linkToRoute('Commentaires visiteurs', 'fas fa-comments', 'firebase_comments');
+        yield MenuItem::linkToRoute('Messages Firebase', 'fas fa-comment', 'firebase_messages');
+      
 
 
         yield MenuItem::section('Site');

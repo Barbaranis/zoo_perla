@@ -13,7 +13,7 @@
         {% for animal in animaux %}
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
-                    <img src="{{ asset('uploads/animaux/' ~ animal.photo) }}" class="card-img-top" alt="{{ animal.nom }}">
+                    <img src="{{ asset('uploads/' ~ animal.photo) }}" class="card-img-top" alt="{{ animal.nom }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ animal.nom }}</h5>
                         <p class="card-text">{{ animal.espece }}</p>

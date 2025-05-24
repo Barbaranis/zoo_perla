@@ -1,14 +1,33 @@
-# config/services.yaml
-
 parameters:
 
-services:
-    # Default configuration for services in *this* file
-    _defaults:
-        autowire: true      # Injecte automatiquement les dépendances
-        autoconfigure: true # Enregistre automatiquement les commandes, events, etc.
 
-    # Rend les classes du dossier src/ disponibles comme services
+services:
+    # Configuration par défaut pour tous les services de ce fichier
+    _defaults:
+        autowire: true       # Injection automatique des dépendances
+        autoconfigure: true  # Enregistrement automatique des commandes, événements, etc.
+        public: false        # Met les services en privé par défaut (bonne pratique)
+
+
+    # Déclaration explicite des contrôleurs Firebase (publics car appelés dans des routes)
+    App\Controller\Admin\FirebaseMessagesController:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+
+    App\Controller\Admin\FirebaseCommentsController:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+
+    # Déclaration explicite du service Firebase
+    App\Service\FirebaseService:
+        public: true
+
+
+    # Rend toutes les classes de src/ accessibles comme services sauf les exclusions
     App\:
         resource: '../src/'
         exclude:
@@ -16,7 +35,4 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # Déclaration explicite du service Firebase
-    App\Service\FirebaseService:
-        public: true
 

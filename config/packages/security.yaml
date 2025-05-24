@@ -38,6 +38,10 @@ security:
                 target: /
 
 
+                 
+
+            login_throttling:
+                max_attempts: 5
 
 
     access_control:

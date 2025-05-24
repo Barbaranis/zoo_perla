@@ -6,35 +6,85 @@
     <title>{% block title %}Zoo Arcadia{% endblock %}</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
     <style>
-        header .nav-link {
-            color: white;
-            background-color: rgba(159, 107, 147, 0.77);
-            margin: 5px;
-            padding: 6px 14px;
-            border-radius: 5px;
-        }
-        header .nav-link:hover {
-            background-color: rgba(225, 106, 199, 0.58);
-        }
+        /* Fond général */
         body {
-            background: linear-gradient(135deg,rgb(116, 69, 101),rgba(88, 71, 82, 0.88));
+            background: linear-gradient(135deg, #5f2c4b, #7a3c5e);
+            color: white;
             min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
         }
-        footer {
-            background-color: rgba(235, 191, 232, 0.78);
+
+
+        /* Contenu principal */
+        main.container {
+            background-color: rgba(255, 255, 255, 0.03);
             padding: 2rem;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
+            border-radius: 12px;
+        }
+
+
+        /* Header */
+        .navbar {
+            background: linear-gradient(to right, #8b3a62, #c6578a);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 10px 10px;
+        }
+
+
+        .navbar-brand img {
+            height: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .nav-link {
+            color: #f0d7e8;
+            background-color: rgba(255, 255, 255, 0.05);
+            margin: 0 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            line-height: 1.4;
+        }
+
+
+        .nav-link:hover {
+            background-color: #ffd9ec;
+            color: #7e1e61;
+            transform: scale(1.05);
+        }
+
+
+        h1, h2, h3 {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* Pied de page */
+        footer {
+            background-color: rgba(88, 42, 70, 0.85);
+            color: #f0d7e8;
+            padding: 2rem;
+            margin-top: 7%;
         }
     </style>
 </head>
+
+
 <body>
-<header class="p-3 border-bottom bg-dark">
+
+
+<header class="p-3 border-bottom">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('uploads/logo.jpg') }}" alt="Logo" height="50">
+            <a class="navbar-brand" href="{{ path('home') }}">
+                <img src="{{ asset('uploads/logo.jpg') }}" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -81,6 +131,9 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
+
 
