@@ -4,12 +4,19 @@
 
 {% block stylesheets %}
 {{ parent() }}
+
 <style>
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f8f3;
+  }
+
   .section-intro {
-    background: linear-gradient(to right, #f3f2e9, #dbe9d2);
+    background: linear-gradient(to right, #3b5d3b, #8f735b);
     text-align: center;
     padding: 4rem 2rem;
-    color: #2e4a2f;
+    color: #ffffff;
   }
 
   .card-title {
@@ -21,101 +28,72 @@
     color: #4a4a4a;
   }
 
-  .btn-outline-primary {
+  .btn-outline-success {
+    border-radius: 10px;
+    font-weight: 600;
     border-color: #3b5d3b;
     color: #3b5d3b;
-    border-radius: 10px;
-    font-weight: 500;
-    transition: all 0.3s ease;
   }
 
-  .btn-outline-primary:hover {
+  .btn-outline-success:hover {
     background-color: #3b5d3b;
-    color: #fff;
+    color: white;
   }
 
   .card {
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 30%;
   }
 
   .card:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
 
   img {
     object-fit: cover;
-    height: 230px;
+    height: 250px;
+    width: 100%;
+    border-radius: 30px;
   }
 </style>
 {% endblock %}
 
 {% block body %}
 
-<!-- SECTION 1 : Intro -->
-<section class="section-intro">
-  <h1>Découvrez les habitats du Zoo Arcadia</h1>
-  <p>Chaque univers a été recréé pour offrir un environnement naturel, immersif et respectueux de ses habitants.</p>
-</section>
-
-<!-- SECTION 2 : Savane + Jungle -->
-<section class="container my-5">
-  <div class="row g-4 align-items-stretch">
-
-    <!-- Savane -->
-    <div class="col-md-6">
-      <article class="card h-100 shadow-sm">
-        <img src="{{ asset('image/savane.jpg') }}" class="card-img-top" alt="Vue de la savane avec girafes et zèbres" loading="lazy">
-        <div class="card-body">
-          <h3 class="card-title">Savane</h3>
-          <p class="card-text">De vastes plaines dorées abritant lions, girafes et zèbres. Une reconstitution fidèle de l’Afrique sauvage.</p>
-          <a href="{{ path('animaux_par_enclos', { id: 5 }) }}" class="btn btn-outline-primary" aria-label="Voir les animaux de la savane">Voir les animaux</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Jungle -->
-    <div class="col-md-6">
-      <article class="card h-100 shadow-sm">
-        <img src="{{ asset('image/fontimgconnex.jpg') }}" class="card-img-top" alt="Forêt tropicale dense avec singes et jaguar" loading="lazy">
-        <div class="card-body">
-          <h3 class="card-title">Jungle</h3>
-          <p class="card-text">Une forêt luxuriante peuplée de singes, grenouilles et panthères, baignée de brume tropicale et de sons exotiques.</p>
-          <a href="{{ path('animaux_par_enclos', { id: 6 }) }}" class="btn btn-outline-primary" aria-label="Voir les animaux de la jungle">Voir les animaux</a>
-        </div>
-      </article>
-    </div>
-
+<!-- Intro -->
+<section class="section-intro" aria-label="Introduction">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Découvrez les habitats du Zoo Arcadia</h1>
+    <p class="lead mt-3">Chaque univers a été recréé pour offrir un environnement naturel, immersif et respectueux de ses habitants.</p>
   </div>
 </section>
-<!-- SECTION 3 : Marais + Aquarium -->
-<section class="container my-5">
-  <h2 class="text-center mb-5 display-5 fw-bold text-success-emphasis">Univers aquatiques</h2>
 
+<!-- Terres sauvages -->
+<section class="container my-5" aria-labelledby="habitats-terrestres">
+  <h2 id="habitats-terrestres" class="text-center mb-5 display-5 fw-bold text-success-emphasis">Terres sauvages</h2>
   <div class="row g-5 justify-content-center">
 
-    <!-- Marais -->
     <div class="col-md-6">
-      <article class="card shadow border-0 h-100" style="border-radius: 1rem; overflow: hidden;">
-        <img src="{{ asset('image/marais1.webp') }}" class="card-img-top" alt="Habitat marais avec oiseaux et loutres" style="height: 250px; object-fit: cover;" loading="lazy">
-        <div class="card-body p-4 bg-light">
-          <h3 class="card-title text-success fw-bold">Marais</h3>
-          <p class="card-text text-muted">Tortues, flamants roses et crocodiles évoluent dans une zone semi-aquatique à l’ambiance mystérieuse et sereine.</p>
-          <a href="{{ path('animaux_par_enclos', { id: 7 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux du marais">Voir les animaux</a>
+      <article class="card border-0 shadow-sm h-100">
+        <img src="{{ asset('image/savane.jpg') }}" alt="Savane avec girafes et zèbres" loading="lazy">
+        <div class="card-body bg-light p-4">
+          <h3 class="card-title text-success fw-bold">Savane</h3>
+          <p class="card-text text-muted">De vastes plaines dorées abritant lions, girafes et zèbres. Une immersion dans l’Afrique sauvage.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 1 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux de la savane">Voir les animaux</a>
         </div>
       </article>
     </div>
 
-    <!-- Aquarium -->
     <div class="col-md-6">
-      <article class="card shadow border-0 h-100" style="border-radius: 1rem; overflow: hidden;">
-        <img src="{{ asset('image/aquarium.jpg') }}" class="card-img-top" alt="Poissons tropicaux dans un aquarium coloré" style="height: 250px; object-fit: cover;" loading="lazy">
-        <div class="card-body p-4 bg-light">
-          <h3 class="card-title text-success fw-bold">Aquarium</h3>
-          <p class="card-text text-muted">Un espace sous-marin magique où vivent raies, requins, méduses et poissons tropicaux colorés. Une immersion apaisante.</p>
-          <a href="{{ path('animaux_par_enclos', { id: 8 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux de l’aquarium">Voir les animaux</a>
+      <article class="card border-0 shadow-sm h-100">
+        <img src="{{ asset('image/fontimgconnex.jpg') }}" alt="Jungle tropicale avec animaux exotiques" loading="lazy">
+        <div class="card-body bg-light p-4">
+          <h3 class="card-title text-success fw-bold">Jungle</h3>
+          <p class="card-text text-muted">Une forêt luxuriante peuplée de singes, panthères et oiseaux dans un écosystème vibrant.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 2 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux de la jungle">Voir les animaux</a>
         </div>
       </article>
     </div>
@@ -123,7 +101,35 @@
   </div>
 </section>
 
+<!-- Univers aquatiques -->
+<section class="container my-5" aria-labelledby="habitats-aquatiques">
+  <h2 id="habitats-aquatiques" class="text-center mb-5 display-5 fw-bold text-success-emphasis">Univers aquatiques</h2>
+  <div class="row g-5 justify-content-center">
 
+    <div class="col-md-6">
+      <article class="card border-0 shadow-sm h-100">
+        <img src="{{ asset('image/marais1.webp') }}" alt="Marais avec loutres et flamants roses" loading="lazy">
+        <div class="card-body bg-light p-4">
+          <h3 class="card-title text-success fw-bold">Marais</h3>
+          <p class="card-text text-muted">Tortues, flamants roses et crocodiles évoluent dans une zone semi-aquatique à l’ambiance mystérieuse.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 3 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux du marais">Voir les animaux</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="col-md-6">
+      <article class="card border-0 shadow-sm h-100">
+        <img src="{{ asset('image/aquarium.jpg') }}" alt="Aquarium tropical coloré avec poissons" loading="lazy">
+        <div class="card-body bg-light p-4">
+          <h3 class="card-title text-success fw-bold">Aquarium</h3>
+          <p class="card-text text-muted">Un espace sous-marin magique avec raies, requins, méduses et poissons tropicaux colorés.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 4 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux de l’aquarium">Voir les animaux</a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
 
 {% endblock %}
 
