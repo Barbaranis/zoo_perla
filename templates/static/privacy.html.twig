@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Politique de confidentialité - Zoo Arcadia{% endblock %}
+
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4 text-center" style="color:#7e1e61;">Politique de confidentialité</h1>
+    <p>Zoo Arcadia respecte votre vie privée. Les données collectées (comme les avis) ne sont utilisées que pour améliorer votre expérience sur le site. Aucune donnée personnelle n’est revendue ni partagée à des tiers.</p>
+    <p>Nous utilisons Firebase uniquement pour stocker les avis anonymes des visiteurs. Les formulaires sont protégés par un système anti-spam et un token CSRF.</p>
+    <p>Pour toute question, contactez-nous via <a href="{{ path('contact') }}">la page contact</a>.</p>
+</div>
+{% endblock %}
+
+

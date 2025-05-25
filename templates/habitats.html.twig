@@ -6,31 +6,48 @@
 {{ parent() }}
 <style>
   .section-intro {
-    background-color: #ffe5f0;
+    background: linear-gradient(to right, #f3f2e9, #dbe9d2);
     text-align: center;
     padding: 4rem 2rem;
-  }
-
-  .btn-offre {
-    background-color: #e279a8;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
-
-  .btn-offre:hover {
-    background-color: #d06494;
+    color: #2e4a2f;
   }
 
   .card-title {
-    color: #7e1e61;
+    color: #3b5d3b;
+    font-weight: bold;
   }
 
   .card-text {
-    color: #5a2a41;
+    color: #4a4a4a;
+  }
+
+  .btn-outline-primary {
+    border-color: #3b5d3b;
+    color: #3b5d3b;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #3b5d3b;
+    color: #fff;
+  }
+
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  img {
+    object-fit: cover;
+    height: 230px;
   }
 </style>
 {% endblock %}
@@ -49,85 +66,64 @@
 
     <!-- Savane -->
     <div class="col-md-6">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ asset('image/savane.jpg') }}" class="card-img-top" alt="Habitat Savane">
+      <article class="card h-100 shadow-sm">
+        <img src="{{ asset('image/savane.jpg') }}" class="card-img-top" alt="Vue de la savane avec girafes et zèbres" loading="lazy">
         <div class="card-body">
           <h3 class="card-title">Savane</h3>
           <p class="card-text">De vastes plaines dorées abritant lions, girafes et zèbres. Une reconstitution fidèle de l’Afrique sauvage.</p>
-      <!-- Savane -->
-<a href="{{ path('animaux_par_enclos', { id: 5 }) }}" class="btn btn-outline-primary">
-    Voir les animaux
-</a>
-
-   
-
-
+          <a href="{{ path('animaux_par_enclos', { id: 5 }) }}" class="btn btn-outline-primary" aria-label="Voir les animaux de la savane">Voir les animaux</a>
         </div>
-      </div>
+      </article>
     </div>
 
     <!-- Jungle -->
     <div class="col-md-6">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ asset('image/fontimgconnex.jpg') }}" class="card-img-top" alt="Habitat Jungle">
+      <article class="card h-100 shadow-sm">
+        <img src="{{ asset('image/fontimgconnex.jpg') }}" class="card-img-top" alt="Forêt tropicale dense avec singes et jaguar" loading="lazy">
         <div class="card-body">
           <h3 class="card-title">Jungle</h3>
           <p class="card-text">Une forêt luxuriante peuplée de singes, grenouilles et panthères, baignée de brume tropicale et de sons exotiques.</p>
-       <!-- Jungle -->
-<a href="{{ path('animaux_par_enclos', { id: 6 }) }}" class="btn btn-outline-primary">
-    Voir les animaux
-</a>
-
-
-
+          <a href="{{ path('animaux_par_enclos', { id: 6 }) }}" class="btn btn-outline-primary" aria-label="Voir les animaux de la jungle">Voir les animaux</a>
         </div>
-      </div>
+      </article>
     </div>
 
   </div>
 </section>
-
 <!-- SECTION 3 : Marais + Aquarium -->
 <section class="container my-5">
-  <div class="row g-4 align-items-stretch">
+  <h2 class="text-center mb-5 display-5 fw-bold text-success-emphasis">Univers aquatiques</h2>
+
+  <div class="row g-5 justify-content-center">
 
     <!-- Marais -->
     <div class="col-md-6">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ asset('image/marais1.webp') }}" class="card-img-top" alt="Habitat Marais">
-        <div class="card-body">
-          <h3 class="card-title">Marais</h3>
-          <p class="card-text">Tortues, flamants roses et crocodiles évoluent dans une zone semi-aquatique à l’ambiance mystérieuse.</p>
-      <!-- Marais -->
-<a href="{{ path('animaux_par_enclos', { id: 7 }) }}" class="btn btn-outline-primary">
-    Voir les animaux
-</a>
-
-
-
+      <article class="card shadow border-0 h-100" style="border-radius: 1rem; overflow: hidden;">
+        <img src="{{ asset('image/marais1.webp') }}" class="card-img-top" alt="Habitat marais avec oiseaux et loutres" style="height: 250px; object-fit: cover;" loading="lazy">
+        <div class="card-body p-4 bg-light">
+          <h3 class="card-title text-success fw-bold">Marais</h3>
+          <p class="card-text text-muted">Tortues, flamants roses et crocodiles évoluent dans une zone semi-aquatique à l’ambiance mystérieuse et sereine.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 7 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux du marais">Voir les animaux</a>
         </div>
-      </div>
+      </article>
     </div>
 
     <!-- Aquarium -->
     <div class="col-md-6">
-      <div class="card h-100 shadow-sm">
-        <img src="{{ asset('image/aquarium.jpg') }}" class="card-img-top" alt="Habitat Aquarium">
-        <div class="card-body">
-          <h3 class="card-title">Aquarium</h3>
-          <p class="card-text">Un espace sous-marin magique où vivent requins, raies, méduses et poissons colorés. Une plongée fascinante.</p>
-     <!-- Aquarium -->
-<a href="{{ path('animaux_par_enclos', { id: 8 }) }}" class="btn btn-outline-primary">
-    Voir les animaux
-</a>
-
-
-
+      <article class="card shadow border-0 h-100" style="border-radius: 1rem; overflow: hidden;">
+        <img src="{{ asset('image/aquarium.jpg') }}" class="card-img-top" alt="Poissons tropicaux dans un aquarium coloré" style="height: 250px; object-fit: cover;" loading="lazy">
+        <div class="card-body p-4 bg-light">
+          <h3 class="card-title text-success fw-bold">Aquarium</h3>
+          <p class="card-text text-muted">Un espace sous-marin magique où vivent raies, requins, méduses et poissons tropicaux colorés. Une immersion apaisante.</p>
+          <a href="{{ path('animaux_par_enclos', { id: 8 }) }}" class="btn btn-outline-success mt-2" aria-label="Voir les animaux de l’aquarium">Voir les animaux</a>
         </div>
-      </div>
+      </article>
     </div>
 
   </div>
 </section>
 
+
+
 {% endblock %}
+

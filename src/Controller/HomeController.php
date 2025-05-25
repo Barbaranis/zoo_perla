@@ -20,12 +20,59 @@ class HomeController extends AbstractController
     {
         $messages = $firebase->getMessages();
         $form = $formFactory->create(AvisType::class);
-
+    
+    
+        $events = [
+            [
+                'id' => 1,
+                'title' => 'Fête du printemps',
+                'description' => 'Musique, magie florale, et animations pour toute la famille.',
+                'date' => new \DateTime('2025-09-18'),
+                'cta' => 'Réserver',
+            ],
+            [
+                'id' => 2,
+                'title' => 'Soirée nocturne magique',
+                'description' => 'Le zoo s’illumine pour une nuit féérique.',
+                'date' => new \DateTime('2025-06-24'),
+                'cta' => 'Réserver',
+            ],
+            [
+                'id' => 3,
+                'title' => 'Ateliers créatifs enfants',
+                'description' => 'Activités manuelles tous les jours à 11h.',
+                'date' => null,
+                'cta' => 'Participer',
+            ],
+        ];
+        
+        
+        
+    
+    
         return $this->render('home/index.html.twig', [
             'messages' => $messages,
             'avisForm' => $form->createView(),
+            'events' => $events,
         ]);
     }
+    
+    
+    
+    
+    
+    #[Route('/reservation/{id}', name: 'reservation')]
+public function reservation(int $id): Response
+{
+    return $this->render('reservation.html.twig', [
+        'id' => $id
+    ]);
+}
+
+
+
+
+
 
     #[Route('/submit-avis', name: 'submit_avis', methods: ['POST'])]
     public function submitAvis(
@@ -86,5 +133,15 @@ class HomeController extends AbstractController
     {
         return $this->render('avis.html.twig');
     }
+
+
+    #[Route('/politique-de-confidentialite', name: 'privacy')]
+public function privacy(): Response
+{
+    return $this->render('static/privacy.html.twig');
+}
+
+
+
 }
 

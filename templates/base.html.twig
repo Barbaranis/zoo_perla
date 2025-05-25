@@ -4,136 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Zoo Arcadia{% endblock %}</title>
+    <meta name="description" content="Découvrez Zoo Arcadia : un univers naturel, magique et engagé pour la biodiversité.">
     <link rel="icon" type="image/jpeg" href="{{ asset('favicon.ico') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <style>
-        /* Fond général */
-        body {
-            background: linear-gradient(135deg, #5f2c4b, #7a3c5e);
-            color: white;
-            min-height: 100vh;
-            font-family: 'Segoe UI', sans-serif;
-        }
+   :root {
+  --vert-nature: #3b5d3b;
+  --brun-nature: #8f735b;
+  --beige-nature: #d7c4a3;
+  --marron-fonce: #4a342e;
+  --blanc-creme: #f5f5f5;
+  --orange-doux: #e6ae78;
+}
 
 
-        /* Contenu principal */
-        main.container {
-            background-color: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 12px;
-        }
 
 
-        /* Header */
-        .navbar {
-            background: linear-gradient(to right, #8b3a62, #c6578a);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-            border-radius: 0 0 10px 10px;
-        }
+   body {
+    background: linear-gradient(to bottom right, #3b5d3b, #8f735b, #d7c4a3);
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+
+
+       header {
+    background: linear-gradient(to right, rgba(59, 93, 59, 0.95), rgba(85, 63, 50, 0.95));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #b58f6f;
+    padding: 1.5rem 0;
+    backdrop-filter: blur(4px);
+
+
+}
+
 
 
         .navbar-brand img {
-            height: 60px;
+            height: 70px;
+            margin-right: 20px;
+            margin-left: 10px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
 
+       .navbar {
+  background: linear-gradient(to right, var(--vert-nature), var(--brun-nature));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 1.2rem 0;
+  border-bottom: 2px solid var(--orange-doux);
+}
 
-        .nav-link {
-            color: #f0d7e8;
-            background-color: rgba(255, 255, 255, 0.05);
-            margin: 0 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-block;
-            line-height: 1.4;
+.navbar-brand img {
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+  color: var(--blanc-creme);
+  margin: 0 10px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--orange-doux);
+  border-radius: 8px;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link:hover {
+  color: var(--marron-fonce);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+        main.container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
+       footer {
+    background: linear-gradient(to right, rgba(85, 63, 50, 0.9), rgba(93, 81, 59, 0.9));
+    color: #f5f5f5;
+    padding: 2rem;
+    border-top: 2px solid #b58f6f;
+    margin-top: 5%;
+}
 
-        .nav-link:hover {
-            background-color: #ffd9ec;
-            color: #7e1e61;
-            transform: scale(1.05);
+
+
+        footer h6 {
+            font-weight: bold;
         }
 
-
-        h1, h2, h3 {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        footer a {
+            color: var(--orange-doux);
+            text-decoration: none;
         }
 
+        footer a:hover {
+            text-decoration: underline;
+        }
 
-        /* Pied de page */
-        footer {
-            background-color: rgba(88, 42, 70, 0.85);
-            color: #f0d7e8;
-            padding: 2rem;
-            margin-top: 7%;
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 60px;
+            }
         }
     </style>
 </head>
-
-
 <body>
 
-
 <header class="p-3 border-bottom">
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand" href="{{ path('home') }}">
-                <img src="{{ asset('uploads/logo.jpg') }}" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="{{ path('home') }}" class="nav-link">Accueil</a></li>
-                    <li class="nav-item"><a href="{{ path('habitats') }}" class="nav-link">Habitats</a></li>
-                    <li class="nav-item"><a href="{{ path('services') }}" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="{{ path('contact') }}" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="{{ path('login') }}" class="nav-link">Connexion</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a class="navbar-brand" href="{{ path('home') }}">
+        <img src="{{ asset('uploads/logo.jpg') }}" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="{{ path('home') }}" class="nav-link">Accueil</a></li>
+          <li class="nav-item"><a href="{{ path('habitats') }}" class="nav-link">Habitats</a></li>
+          <li class="nav-item"><a href="{{ path('services') }}" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="{{ path('contact') }}" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="{{ path('login') }}" class="nav-link">Connexion</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
 
-<main class="container mt-4">
+
+<main class="container">
     {% block body %}{% endblock %}
 </main>
 
-
 <footer class="text-center">
-    <div class="row">
-        <div class="col-md-4">
-            <h6>ADRESSE</h6>
-            <p>25 rue du zoo<br>Forêt d'Arcadia<br>01 30 39 37 45</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h6>Adresse</h6>
+                <p>25 rue du zoo<br>Forêt d'Arcadia<br>01 30 39 37 45</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h6>Horaires</h6>
+                <p>Lundi au Dimanche<br>de 9h à 15h</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h6>Navigation</h6>
+                <p>Accueil · Habitats · Services · Contact · Connexion</p>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h6>NOS HORAIRES</h6>
-            <p>Lun-Dim : 9h - 15h</p>
-        </div>
-        <div class="col-md-4">
-            <h6>MENU</h6>
-            <p>Accueil · Habitats · Services · Contact · Connexion</p>
-        </div>
+        <p class="mt-3 mb-0">
+            <a href="{{ path('privacy') }}">Politique de confidentialité</a> ·
+            <a href="#">Mentions légales</a>
+        </p>
     </div>
-    <p class="mt-3">
-        <a href="#">Politique de confidentialité</a> ·
-        <a href="#">Mentions légales</a>
-    </p>
 </footer>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </body>
 </html>
-
 
