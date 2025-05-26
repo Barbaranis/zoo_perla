@@ -1,27 +1,52 @@
 <?php
 
+
 namespace App\Controller;
+
 
 use App\Form\AvisType;
 use App\Service\FirebaseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ContactType;
+
+
+
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(FirebaseService $firebase, FormFactoryInterface $formFactory): Response
+    public function index(Request $request, FirebaseService $firebase, FormFactoryInterface $formFactory): Response
     {
+        $response = new Response();
+
+
+        // COOKIE de visite
+        if (!$request->cookies->get('visite_zoo_arcadia')) {
+            $response->headers->setCookie(
+                Cookie::create('visite_zoo_arcadia')
+                    ->withValue('true')
+                    ->withExpires(strtotime('+1 year'))
+            );
+        }
+
+
+        // Avis Firebase
         $messages = $firebase->getMessages();
+
+
+        // Formulaire avis
         $form = $formFactory->create(AvisType::class);
-    
-    
+
+
+        // Événements
         $events = [
             [
                 'id' => 1,
@@ -45,33 +70,18 @@ class HomeController extends AbstractController
                 'cta' => 'Participer',
             ],
         ];
-        
-        
-        
-    
-    
-        return $this->render('home/index.html.twig', [
+
+
+        // Rendu de la vue
+        $response->setContent($this->renderView('home/index.html.twig', [
             'messages' => $messages,
             'avisForm' => $form->createView(),
             'events' => $events,
-        ]);
+        ]));
+
+
+        return $response;
     }
-    
-    
-    
-    
-    
-    #[Route('/reservation/{id}', name: 'reservation')]
-public function reservation(int $id): Response
-{
-    return $this->render('reservation.html.twig', [
-        'id' => $id
-    ]);
-}
-
-
-
-
 
 
     #[Route('/submit-avis', name: 'submit_avis', methods: ['POST'])]
@@ -80,19 +90,22 @@ public function reservation(int $id): Response
         FirebaseService $firebase,
         RateLimiterFactory $submitAvisLimiter,
         FormFactoryInterface $formFactory
-    ): RedirectResponse
-    {
+    ): RedirectResponse {
         $limiter = $submitAvisLimiter->create($request->getClientIp());
+
 
         if (!$limiter->consume(1)->isAccepted()) {
             throw new TooManyRequestsHttpException(60, 'Tu as déjà laissé plusieurs avis ! Reviens dans 1 minute.');
         }
 
+
         $form = $formFactory->create(AvisType::class);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+
 
             $firebase->saveMessage([
                 'nom' => 'Anonyme',
@@ -101,8 +114,19 @@ public function reservation(int $id): Response
             ]);
         }
 
+
         return $this->redirectToRoute('home');
     }
+
+
+    #[Route('/reservation/{id}', name: 'reservation')]
+    public function reservation(int $id): Response
+    {
+        return $this->render('reservation.html.twig', [
+            'id' => $id
+        ]);
+    }
+
 
     #[Route('/habitats', name: 'habitats')]
     public function habitats(): Response
@@ -110,23 +134,22 @@ public function reservation(int $id): Response
         return $this->render('habitats.html.twig');
     }
 
+
     #[Route('/services', name: 'services')]
     public function services(): Response
     {
         return $this->render('services.html.twig');
     }
 
-    #[Route('/contact', name: 'contact')]
-    public function contact(): Response
-    {
-        return $this->render('contact.html.twig');
-    }
+
+    
 
     #[Route('/login', name: 'login')]
     public function login(): Response
     {
         return $this->render('login.html.twig');
     }
+
 
     #[Route('/avis', name: 'avis')]
     public function avis(): Response
@@ -136,12 +159,9 @@ public function reservation(int $id): Response
 
 
     #[Route('/politique-de-confidentialite', name: 'privacy')]
-public function privacy(): Response
-{
-    return $this->render('static/privacy.html.twig');
-}
-
-
-
+    public function privacy(): Response
+    {
+        return $this->render('static/privacy.html.twig');
+    }
 }
 

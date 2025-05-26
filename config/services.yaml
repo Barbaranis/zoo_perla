@@ -1,5 +1,6 @@
 parameters:
 
+    recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
     # Configuration par défaut pour tous les services de ce fichier
