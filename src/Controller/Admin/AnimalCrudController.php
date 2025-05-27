@@ -28,22 +28,36 @@ class AnimalCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
+
+
             TextField::new('nom', 'Nom'),
+
+
             TextField::new('espece', 'Espèce'),
+
+
             IntegerField::new('age', 'Âge'),
+
+
             TextareaField::new('description', 'Description')->hideOnIndex(),
+
+
             ImageField::new('photo', 'Photo')
-                ->setBasePath('uploads/animaux')
-                ->setUploadDir('public/uploads')
+                ->setBasePath('uploads')
+                ->setUploadDir('public/uploads') // ← le dossier final
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->setRequired(true)
                 ->setFormTypeOption('constraints', [
                     new NotBlank(['message' => 'Une image est obligatoire pour chaque animal.']),
                 ]),
+
+
             DateField::new('dateArrivee', 'Date d’arrivée'),
-            AssociationField::new('enclos', 'Enclos'),
+
+
+            AssociationField::new('enclos', 'Enclos')
+                ->setRequired(true),
         ];
     }
 }
-
 
