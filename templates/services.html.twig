@@ -4,48 +4,68 @@
 
 {% block stylesheets %}
 <style>
-    body {
-        background: linear-gradient(to bottom right, #ffe0f0, #f9c2da);
-    }
-    section {
-        padding: 4rem 0;
-        border-bottom: 1px solid #f2b6d4;
-    }
-    .section-title {
-        color: #c91e72;
-        font-weight: bold;
-    }
-    .icon-service {
-        font-size: 1.5rem;
-        margin-right: 10px;
-    }
-    .img-service {
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
-    }
-    .img-service:hover {
-        transform: scale(1.03);
-    }
+  :root {
+    --vert-nature: #3b5d3b;
+    --brun-nature: #8f735b;
+    --orange-doux: #e6ae78;
+    --blanc-clair: rgba(255, 255, 255, 0.9);
+    --noir-texte: #1a1a1a;
+  }
 
 
-section + section {
+  body {
+    background: linear-gradient(to bottom right, var(--vert-nature), var(--brun-nature), var(--orange-doux));
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--noir-texte);
+  }
+
+
+  section {
+    padding: 4rem 0;
+  }
+
+
+  section + section {
     margin-top: 4rem;
-}
+  }
 
 
+  .text-box {
+    background-color: var(--blanc-clair);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    color: var(--noir-texte);
+  }
 
 
-.btn-pink:hover {
-    background-color: #b8226d;
-    transform: scale(1.05);
-}
+  .text-box p,
+  .text-box h2,
+  .text-box h3 {
+    color: var(--noir-texte) !important;
+    font-weight: 500;
+  }
 
 
+  .btn-outline-success {
+    border-color: var(--vert-nature);
+    color: var(--vert-nature);
+    font-weight: bold;
+  }
 
 
+  .btn-outline-success:hover {
+    background-color: var(--vert-nature);
+    color: white;
+  }
 </style>
 {% endblock %}
+
+
+
+
+
+
 
 {% block body %}
 <div class="container">
