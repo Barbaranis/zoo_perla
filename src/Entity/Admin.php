@@ -96,5 +96,29 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // $this->plainPassword = null;
     }
+
+
+
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $resetToken = null;
+    
+    
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+    
+    
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+        return $this;
+    }
+    
+    
+
+
+
 }
 

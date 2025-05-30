@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Connexion - Zoo Arcadia{% endblock %}
+
 
 {% block stylesheets %}
 {{ parent() }}
@@ -47,31 +49,19 @@
     .form-label {
         font-weight: bold;
     }
-
-
-
-
-
-
-.g-recaptcha {
-    display: inline-block;
-    transform: scale(1);
-    transform-origin: center;
-    margin-left: 10%;
-}
-
-
-
-
+    .g-recaptcha {
+        display: inline-block;
+        transform: scale(1);
+        transform-origin: center;
+        margin-left: 10%;
+    }
 </style>
 {% endblock %}
 
 
-
-
 {% block body %}
-{# script important pour afficher reCAPTCHA #}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 <div class="login-container">
     <div class="login-card">
@@ -81,74 +71,44 @@
             <p class="text-muted">Accédez à votre espace sécurisé</p>
         </div>
 
+
         {% if error %}
             <div class="alert alert-danger" role="alert">
                 Identifiants incorrects. Veuillez réessayer.
             </div>
         {% endif %}
 
-        {# Démarre le formulaire ici, incluant tous les champs y compris le captcha #}
+
         {{ form_start(captchaForm, { attr: { method: 'post', action: path('login') } }) }}
             <div class="mb-3">
                 <label for="username" class="form-label">Adresse e-mail</label>
                 <input type="text" name="_username" id="username" class="form-control" value="{{ last_username }}" required>
             </div>
 
+
             <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
                 <input type="password" name="_password" id="password" class="form-control" required>
             </div>
 
-         
 
-<div class="mb-3 text-center">
-    <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
-</div>
-
-
-
-
-
-
+            <div class="mb-3 text-center">
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+            </div>
 
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-login">Se connecter</button>
             </div>
-
-
-
         {{ form_end(captchaForm) }}
 
+
         <p class="text-center mt-3">
-            <a href="#" class="text-muted text-decoration-none">Mot de passe oublié ?</a>
+            <a href="{{ path('app_forgot_password') }}" class="text-muted text-decoration-none">
+                Mot de passe oublié ?
+            </a>
         </p>
     </div>
 </div>
-
-
-<script>
-document.getElementById('form_login').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const res = await fetch("/login_check", {
-        method: "POST",
-        body: formData,
-    });
-
-    const json = await res.json();
-
-    if (json.success) {
-        form.submit(); // ou redirige manuellement
-    } else {
-        alert(json.error);
-    }
-});
-</script>
-
-
 {% endblock %}
 
