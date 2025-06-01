@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Tableau de bord Employé{% endblock %}
+
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Bienvenue {{ app.user.prenom }} {{ app.user.nom }}</h1>
+    <p class="mb-4">Poste : <strong>{{ app.user.poste }}</strong></p>
+
+
+    <hr>
+
+
+    {% if app.user.poste == 'Soigneur' %}
+        <h2>🐾 Animaux à soigner aujourd’hui</h2>
+        <p>Préparez votre matériel : les soins commencent à 9h !</p>
+
+
+    {% elseif app.user.poste == 'Vétérinaire' %}
+        <h2>🩺 Suivis médicaux</h2>
+        <p>Consultez les dossiers des animaux malades et préparez vos consultations.</p>
+
+
+    {% elseif app.user.poste == 'Agent d\'accueil' %}
+        <h2>📋 Visites prévues</h2>
+        <p>Veillez à l’accueil des visiteurs et à la distribution des plans du zoo.</p>
+
+
+    {% elseif app.user.poste == 'Guide' %}
+        <h2>🗺️ Parcours guidés</h2>
+        <p>Préparez-vous pour les visites guidées de l’après-midi.</p>
+
+
+    {% elseif app.user.poste == 'Agent de sécurité' %}
+        <h2>🔐 Sécurité du site</h2>
+        <p>Effectuez vos rondes et vérifiez les caméras de surveillance.</p>
+
+
+    {% elseif app.user.poste == 'Nettoyage' %}
+        <h2>🧽 Zones à nettoyer</h2>
+        <p>Consultez le planning de nettoyage quotidien.</p>
+
+
+    {% else %}
+        <h2>📌 Tâches générales</h2>
+        <p>Aucune tâche spécifique assignée pour ce poste.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+

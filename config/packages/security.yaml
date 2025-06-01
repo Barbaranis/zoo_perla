@@ -2,59 +2,44 @@ security:
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
 
-
-
-
     providers:
-        app_user_provider:
+        chain_provider:
+            chain:
+                providers: [admin_provider, employe_provider]
+
+        admin_provider:
             entity:
                 class: App\Entity\Admin
                 property: email
 
-
-
+        employe_provider:
+            entity:
+                class: App\Entity\Employe
+                property: email
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-
-
-
         main:
             lazy: true
-            provider: app_user_provider
+            provider: chain_provider
             form_login:
                 login_path: login
                 check_path: login
                 username_parameter: _username
-              
-               
                 password_parameter: _password
-                default_target_path: admin_dashboard
+                success_handler: App\Security\LoginSuccessHandler
+                default_target_path: /admin
             logout:
                 path: logout
                 target: /
-
-
-                 
-
             login_throttling:
                 max_attempts: 5
 
-
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/employe, roles: ROLE_EMPLOYE }
         - { path: ^/login, roles: PUBLIC_ACCESS }
-
-
-
-
-
-
-
-
-
-
 

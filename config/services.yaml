@@ -35,3 +35,11 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+
+  
+    App\Security\LoginSuccessHandler:
+        arguments:
+            $router: '@router'
+
+           
