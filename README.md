@@ -1,6 +1,6 @@
 # Zoo Arcadia 🐾 - Projet Symfony Fullstack
 
-Bienvenue sur le projet **Zoo Arcadia**, développé dans le cadre du titre professionnel DWWM (Développeur Web et Web Mobile). Ce projet est une application web de gestion de zoo, avec une partie publique (visiteurs) et une partie privée (admin et employés).
+Bienvenue sur le projet **Zoo Arcadia**, développé dans le cadre dans projet . Ce projet est une application web de gestion de zoo, avec une partie publique (visiteurs) et une partie privée (admin et employés).
 
 ---
 
